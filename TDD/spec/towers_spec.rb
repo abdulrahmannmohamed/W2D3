@@ -23,9 +23,17 @@ describe '#Towers_of_hanoi' do
     it 'should move to last disk of new stack' do
       disk = game.stacks[1].last
       game.move_disk(1, 2)
-      expect(game.stacks[2]).to eq(disk)
+      expect(game.stacks[2].last).to eq(disk)
     end
 
+    it "shouldn't put a larger disk on a smaller disk" do
+      game.move_disk(1, 2)
+      expect { game.move_disk(1, 2) }.to raise_error("You can't put a larger disk on a smaller disk")
+    end
+
+    it "shouldn't be able to move from an empty stack" do
+      expect { game.move_disk(2, 1) }.to raise_error("You can't remove from an empty stack")
+    end
   end
 
 end
