@@ -2,8 +2,9 @@ class Towers_of_hanoi
 
   attr_accessor :stacks
 
-  def initialize
-    @stacks = { 1 => [3, 2, 1], 2 => [], 3 => [] }
+  def initialize(stacks = nil)
+    @stacks = stacks
+    @stacks ||= { 1 => [3, 2, 1], 2 => [], 3 => [] }
   end
 
   def move_disk(start_idx, end_idx)
@@ -16,4 +17,7 @@ class Towers_of_hanoi
     @stacks[end_idx] << @stacks[start_idx].pop
   end
 
+  def won?
+    @stacks[3] == [3,2,1] || @stacks[2] == [3,2,1]
+  end
 end

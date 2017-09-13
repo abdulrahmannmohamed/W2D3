@@ -36,4 +36,20 @@ describe '#Towers_of_hanoi' do
     end
   end
 
+  describe '#won?' do
+    it 'should return false when game incomplete' do
+      expect(game.won?).to be(false)
+    end
+    it 'should return true when game complete in third stack' do
+      hash  = { 1 => [], 2 => [], 3 => [3, 2, 1] }
+      winning_game = Towers_of_hanoi.new(hash)
+      expect(winning_game.won?).to be(true)
+    end
+    it 'should return true when game complete in second stack' do
+      hash  = { 1 => [], 2 => [3, 2, 1], 3 => [] }
+      winning_game = Towers_of_hanoi.new(hash)
+      expect(winning_game.won?).to be(true)
+    end
+  end
+
 end
