@@ -41,8 +41,8 @@ end
 
 
 def stock_picker(prices)
-  best_profit = prices[1] - prices[0]
-  best_days = [0, 1]
+  best_profit = 0
+  best_days = nil
   (prices.length - 1).times do |day|
     idx2 = day + 1
     while idx2 < prices.length
