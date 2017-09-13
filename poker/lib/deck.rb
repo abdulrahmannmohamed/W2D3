@@ -23,7 +23,7 @@ class Deck
     @deck.shuffle!
   end
 
-  def take_cards(n = 1)
+  def give_cards(n = 1)
     cards = []
     n.times { |n| cards << @deck.pop }
     cards

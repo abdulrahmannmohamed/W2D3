@@ -29,23 +29,23 @@ describe Deck do
     end
   end
 
-  describe '#take_cards' do
+  describe '#give_cards' do
     it 'should take one card without an argument' do
       deck.shuffle
-      card = deck.take_cards
+      card = deck.give_cards
       expect(card.first.class).to eq(Card)
       expect(deck.deck.length).to eq(51)
     end
 
     it 'deck should not have the taken card' do
       deck.shuffle
-      cards = deck.take_cards
+      cards = deck.give_cards
       expect(deck.deck.include?(cards.first)).to eq(false)
     end
 
     it 'should be able to take multiple cards' do
       deck.shuffle
-      cards = deck.take_cards(5)
+      cards = deck.give_cards(5)
       expect(cards.length).to eq(5)
       expect(cards.all? {|el| el.is_a?(Card)} )
     end
